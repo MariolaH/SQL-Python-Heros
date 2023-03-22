@@ -10,6 +10,12 @@ def select_all_heroes():
         """
     select_all_heroes = execute_query(query).fetchall()
     for count, value in enumerate(select_all_heroes):
-        print(f'{count +1}: {value[0]}') 
+        print(f'{count +1}: {value[0]}' '\v') 
 
-select_all_heroes()
+# select_all_heroes()
+
+def begin():
+    start = input("Hit ENTER to see a list of Heroes" '\v')
+    if start == "":
+        select_all_heroes()
+begin()
