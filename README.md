@@ -84,7 +84,7 @@ FROM mytable
 INNER JOIN another_table 
     ON mytable.id = another_table.id
 
-ex. abilities type
+EX. abilities type
 
 SELECT name
 FROM heroes
@@ -105,3 +105,47 @@ JOIN
 
 UPDATE
 
+EX. ability_ type
+FROM Mind control to mind reader
+
+UPDATE table_name
+SET column1 = value1,
+WHERE condition;
+
+```
+
+```
+
+DELETE
+
+EX. Hero - Mrs. Muscles
+
+DELETE FROM table_name
+WHERE condition;
+
+```
+```
+FUNCTIONS:
+
+START TERMINAL
+    PROMPT - HELLO WELCOME TO THE SUPER HERO DATABASE
+    
+    LIST OF HEROS IS DISPLAYED
+
+    PLEASE SELECT A SUPERHERO
+
+    INPUT - NUMBER OF SUPERHERO
+
+    DISPLAY - SUPER HEROES NAME
+
+    PROMPT - WHAT DO YOU WANT TO KNOW ABOUT THEM?
+
+    LIST - about_me, biography, abilities, relationships
+
+    DISPLAY - select: about_me, biography, abilities, relationships
+
+    INPUT - NUMBER/NAME?
+
+    DISPLAY - INFO
+
+    INPUT - HEROS - RETURN TO MAIN SCREEN
