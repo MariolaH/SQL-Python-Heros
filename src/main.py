@@ -79,7 +79,7 @@ def update():
         WHERE id = %s
         """
     execute_query(query, params)
-    print(f'Your new name is {change_name} ''\v')
+    print(f'Heroes name has been changed to {change_name} ''\v')
     main_menu = input('Press ENTER to return to main menu')
     if main_menu == "":
         pass
@@ -92,7 +92,21 @@ def delete():
         Delete FROM heroes where id = %s
         """
     delete_query = execute_query(query, (start, ))
-    print(f'Name: {start} has been removed... byeeeeeee')
+
+    print(f""" {start} has been removed 
+
+ _                                                
+| |__   _   _   ___   ___   ___   ___   
+| '_ \ | | | | / _ \ / _ \ / _ \ / _ \ 
+| |_) || |_| ||  __/|  __/|  __/|  __/
+|_.__/  \__, | \___| \___| \___| \___| 
+        |___/                                     
+
+
+
+
+""")
+
     next = input('Do you want to delete another Hero? Yes or No  ').capitalize()
     if next == 'Yes':
         delete()
