@@ -1,6 +1,7 @@
 from database.db_connection import execute_query
 import os
 
+os.system('clear')
 def logo():
     print("""
 
@@ -29,7 +30,7 @@ def select_all_heroes():
 
 def options_menu():
     os.system('clear')
-    value = input('\vWhat would you like to do next?\n\v 1. Add a new hero?\n\v 2. Delete a Hero?\n\v 3. Change the name of a hero?\n\v Select a number?\n\v')
+    value = input('\vWhat would you like to do next?\n\v 1. Add a new hero?\n\v 2. Delete a Hero?\n\v 3. Change the name of a hero?\n\v 4. Hero Info?\n\v Select a number?\n\v')
     if value == '1':
         add()
         options_menu()
@@ -38,7 +39,12 @@ def options_menu():
         delete()
     elif value == '3':
         os.system('clear')
+        update()
         options_menu()
+    elif value == '4':
+        os.system('clear')
+        begin()
+        options()
 
 def begin():
     start = input("Hit ENTER to see a list of Heroes" '\v')
@@ -47,15 +53,37 @@ def begin():
 begin()
 
 def add():
-    name = input("Please name your Hero ")
-    about_me = input("Add an about me ")
-    biography = input("Add a bio ")
+    name = input("Please name your Hero\v ")
+    about_me = input("Add an about me\v ")
+    biography = input("Add a bio\v ")
     params = (name, about_me, biography)
     query = """ 
         INSERT INTO heroes (name, about_me, biography)
         VALUES (%s, %s, %s)
         """
     execute_query(query, params)
+    print(f'Congrats you created a new Hero named {name} ''\v')
+    main_menu = input('Press ENTER to return to main menu')
+    if main_menu == "":
+        pass
+
+
+def update():
+    select_all_heroes()
+    name = input("ENTER the Heroes number "'\v')
+    change_name = input("What would you like to change the name to? "'\v')
+    params = (change_name, name)
+    query = """ 
+        UPDATE heroes
+        SET name = %s
+        WHERE id = %s
+        """
+    execute_query(query, params)
+    print(f'Your new name is {change_name} ''\v')
+    main_menu = input('Press ENTER to return to main menu')
+    if main_menu == "":
+        pass
+
 
 def delete():
     select_all_heroes()
@@ -64,19 +92,18 @@ def delete():
         Delete FROM heroes where id = %s
         """
     delete_query = execute_query(query, (start, ))
-    print(f'Name: {start} has been removed')
+    print(f'Name: {start} has been removed... byeeeeeee')
     next = input('Do you want to delete another Hero? Yes or No  ').capitalize()
     if next == 'Yes':
         delete()
     elif next == 'No':
-        begin()
-        options()
+        options_menu()
 
 
 def options():
     os.system('clear')
     select_all_heroes()
-    start = input("ENTER in a number to get more info about a Hero " '\v')
+    start = input("ENTER the number of the Hero you want to know more about " '\v')
     query = """ 
         SELECT
         name, 
@@ -86,8 +113,8 @@ def options():
         WHERE id = %s 
         """
     select_hero = execute_query(query, (start, )).fetchone()
-    print(f'Name: {select_hero[0]} \n \v About: {select_hero[1]} \n \v Bio:{select_hero[2]} \v')
-    game = input("Had enough of these Heroes... ENTER...YES for the next task \n\v ENTER NO to see more Heroes and their info... ").capitalize()
+    print(f'Name: {select_hero[0]}\v\nAbout: {select_hero[1]}\n\vBio:{select_hero[2]}\v')
+    game = input("Had enough of these Heroes... TYPE: YES for the next task \n\vTYPE: NO to see more Heroes and their info... ").capitalize()
     if game == "Yes":
         os.system('clear') 
         options_menu()   
@@ -100,9 +127,6 @@ options()
 
 
 
-
-# def update()
-#     update a characters name
 
 # def abilities():
 #     add abilites to heroes when their name is selected
