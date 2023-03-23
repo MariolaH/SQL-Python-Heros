@@ -83,8 +83,12 @@ def options():
         value = input('\vWhat would you like to do next?\n\v 1. Add a new hero?\n\v 2. Delete a Hero?\n\v 3. Change the name of a hero?\n\v Select a number?\n\v')
         if value == '1':
             add()
-            # quit()
-    elif game == "No":
+        elif value == '2':
+            quit()
+        elif value == '3':
+            quit()
+    else:
+        game == "No"
         select_all_heroes()
         options()            
 options()
