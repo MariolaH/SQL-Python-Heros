@@ -77,7 +77,17 @@ def options():
 options()
 
 
-# delete()
+# def add()
+#     create a new character 
+#     create thier bio and about me
+
+
+# def update()
+#     update a characters name
+
+# def abilities():
+#     add abilites to heroes when their name is selected
+
 # def delete():
 #     start = input("Select a hero to delete: " '\v')
 #     query = """"
@@ -85,3 +95,4 @@ options()
 #         """
 #     select_hero = execute_query(query, (start, ))
 #     print(f'Name: {start} has been removed') 
+# delete()
