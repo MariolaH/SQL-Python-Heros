@@ -67,8 +67,8 @@ def options():
         WHERE id = %s 
         """
     select_hero = execute_query(query, (start, )).fetchone()
-    print(f'Name: {select_hero[0]} \n \v About: {select_hero[1]} \n \v Bio:{select_hero[2]}')
-    game = input("HAD ENOUGH").capitalize()
+    print(f'Name: {select_hero[0]} \n \v About: {select_hero[1]} \n \v Bio:{select_hero[2]} \v')
+    game = input("HAD ENOUGH... ENTER...YES or NO...").capitalize()
     if game == "Yes":
         quit()
     elif game == "No":
