@@ -1,7 +1,5 @@
 from database.db_connection import execute_query
 
-# execute_query('SELECT * FROM heroes')
-
 def logo():
     print("""
 
@@ -16,25 +14,59 @@ def logo():
 """)
 logo()
 
-def select_all_heroes():
-    query = """ 
-        SELECT name 
-        from heroes 
-        
-        """
-    select_all_heroes = execute_query(query).fetchall()
-    for count, value in enumerate(select_all_heroes):
-        print(f'{count +1}: {value[0]}' '\v') 
-
-# def heroes_info():
+# def select_all_heroes():
 #     query = """ 
-#         SELECT name, about_me, biography 
-#         from heroes
-          
+#         SELECT name 
+#         from heroes 
         
 #         """
 #     select_all_heroes = execute_query(query).fetchall()
 #     for count, value in enumerate(select_all_heroes):
+#         print(f'{count +1}: {value[0]}' '\v') 
+
+def select_all_heroes():
+    query = """ 
+        SELECT id, name 
+        FROM heroes
+        ORDER BY id ASC;
+        
+        """
+    name = execute_query(query).fetchall()
+    for count, x in name:
+        print(f'ID {count}: {x}' '\v') 
+
+# def get_bio():
+#     query = """ 
+#         SELECT id, 
+#         about_me,
+#         biography
+#         FROM heroes
+        
+#         """
+#     name = execute_query(query).fetchall()
+#     for count, x in name:
+#         print(f'{count +1}: {value[0]}' '\v') 
+
+
+# def get_ability():
+#     query = """ 
+#         SELECT *
+#         FROM ability_types
+        
+#         """
+#     ability = execute_query(query).fetchall()
+#     for count, x in ability:
+#         print(f'{count +1}: {value[0]}' '\v')                
+
+# def heroes_info():
+#     query = """ 
+#         SELECT name, about_me, biography, name.ability_types
+#         from heroes
+#         join ability_types
+#             on heroes.id = ability_types.id  
+#         """
+#     heroes_info = execute_query(query).fetchall()
+#     for count, value in enumerate(heroes_info):
 #         print(f'{count +1}: {value[0]}' '\v') 
 
 
@@ -61,9 +93,4 @@ def options():
     else:
         print('Lieutenant Lidar')
 options()    
-
-# def Info():
-#     start = input('\v'"Hit ENTER to see some more info about them")
-    
-# Info()
 
