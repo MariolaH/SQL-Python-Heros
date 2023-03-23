@@ -33,30 +33,7 @@ def select_all_heroes():
         """
     name = execute_query(query).fetchall()
     for count, x in name:
-        print(f'ID {count}: {x}' '\v') 
-
-# def get_bio():
-#     query = """ 
-#         SELECT id, 
-#         about_me,
-#         biography
-#         FROM heroes
-        
-#         """
-#     name = execute_query(query).fetchall()
-#     for count, x in name:
-#         print(f'{count +1}: {value[0]}' '\v') 
-
-
-# def get_ability():
-#     query = """ 
-#         SELECT *
-#         FROM ability_types
-        
-#         """
-#     ability = execute_query(query).fetchall()
-#     for count, x in ability:
-#         print(f'{count +1}: {value[0]}' '\v')                
+        print(f'ID {count}: {x}' '\v')              
 
 # def heroes_info():
 #     query = """ 
@@ -78,19 +55,33 @@ def begin():
         select_all_heroes()
 begin()
 
+
 def options():
     start = input("Select a Hero by ENTERING in their number to get more info about them: " '\v')
-    if start == "1":
-        print('Chill Women')
-    elif start == "2":
-        print('The Seer')
-    elif start == "3":
-        print('McMuscles')
-    elif start == "4":
-        print('The Hummingbird')
-    elif start == "5":
-        print('Mental Mary')
-    else:
-        print('Lieutenant Lidar')
-options()    
+    query = """ 
+        SELECT
+        name, 
+        about_me,
+        biography
+        FROM heroes
+        WHERE id = %s 
+        """
+    select_hero = execute_query(query, (start, )).fetchone()
+    print(f'Name: {select_hero[0]} \n \v About: {select_hero[1]} \n \v Bio:{select_hero[2]}')
+    game = input("HAD ENOUGH").capitalize()
+    if game == "Yes":
+        quit()
+    elif game == "No":
+        select_all_heroes()
+        options()            
+options()
 
+
+# delete()
+# def delete():
+#     start = input("Select a hero to delete: " '\v')
+#     query = """"
+#         Delete FROM heros where id = %s 
+#         """
+#     select_hero = execute_query(query, (start, ))
+#     print(f'Name: {start} has been removed') 
