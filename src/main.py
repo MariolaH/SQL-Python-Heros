@@ -55,9 +55,19 @@ def begin():
         select_all_heroes()
 begin()
 
+def add():
+    name = input("Please name your Hero ")
+    about_me = input("Add an about me ")
+    biography = input("Add a bio ")
+    params = (name, about_me, biography)
+    query = """ 
+        INSERT INTO heroes (name, about_me, biography)
+        VALUES (%s, %s, %s)
+        """
+    execute_query(query, params)
 
 def options():
-    start = input("Select a Hero by ENTERING in their number to get more info about them: " '\v')
+    start = input("ENTER in a number to get more info about a Hero " '\v')
     query = """ 
         SELECT
         name, 
@@ -68,18 +78,18 @@ def options():
         """
     select_hero = execute_query(query, (start, )).fetchone()
     print(f'Name: {select_hero[0]} \n \v About: {select_hero[1]} \n \v Bio:{select_hero[2]} \v')
-    game = input("HAD ENOUGH... ENTER...YES or NO...").capitalize()
+    game = input("Had enough of these Heroes... ENTER...YES for the next task \n\v ENTER NO to see more Heroes and their info... ").capitalize()
     if game == "Yes":
-        quit()
+        value = input('\vWhat would you like to do next?\n\v 1. Add a new hero?\n\v 2. Delete a Hero?\n\v 3. Change the name of a hero?\n\v Select a number?\n\v')
+        if value == '1':
+            add()
+            # quit()
     elif game == "No":
         select_all_heroes()
         options()            
 options()
 
 
-# def add()
-#     create a new character 
-#     create thier bio and about me
 
 
 # def update()
@@ -87,6 +97,7 @@ options()
 
 # def abilities():
 #     add abilites to heroes when their name is selected
+
 
 # def delete():
 #     start = input("Select a hero to delete: " '\v')
