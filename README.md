@@ -26,51 +26,8 @@ D: DELETE: get rid of an entry
 ```
 INSERT
 
-
-INSERT INTO
-    heroes (name, about_me, biography)
-VALUES
-    (
-        'Mrs Muscle',
-        'Strongest women you have ever met.',
-        'Mrs Muscle loves to work out 6 - 8 hours a day. For every meal she eats 50 grams of protein and 100 grams of carbs. .'
-    );
-
-
-INSERT INTO
-    abilities (hero_id, ability_type_id)
-VALUES
-    (7, 8);
-
-
-INSERT INTO
-    abilities (hero_id, ability_type_id)
-VALUES
-    (7, 1);
-
-
-INSERT INTO
-    abilities (hero_id, ability_type_id)
-VALUES
-    (7, 5);
-
-
-INSERT INTO
-    relationships (hero1_id, hero2_id, relationship_type_id)
-VALUES
-    (3, 7, 2);
-
-
-INSERT INTO
-    relationships (hero1_id, hero2_id, relationship_type_id)
-VALUES
-    (7, 1, 1);        
-
-
-INSERT INTO
-    ability_types (name)
-VALUES
-    ('Mind Control');
+INSERT INTO heroes (name, about_me, biography)
+        VALUES (%s, %s, %s)
 
 ```
 
@@ -136,16 +93,19 @@ START TERMINAL
 
     INPUT - NUMBER OF SUPERHERO
 
-    DISPLAY - SUPER HEROES NAME
+    DISPLAY - SUPER HEROES NAME, ABOUT_ME AND BIO
 
-    PROMPT - WHAT DO YOU WANT TO KNOW ABOUT THEM?
+    PROMPT 1
+        - CONTINUE WITH GETTING INFO ON HEROES
+        - NEXT TASK?
 
-    LIST - about_me, biography, abilities, relationships
+    IF - CONTINUE WITH GETTING INFO ON HEROES
+            AFTER INFO IS DISPLAYED, GO BACK TO PROMPT 1
 
-    DISPLAY - select: about_me, biography, abilities, relationships
+    ELSE - NEXT TASK?
+        1. ADD A NEW HERO
+        2. DELETE A HERO
+        3 UPDATE NAME OF A HERO
+        4. RETURN TO STARTING POINT
 
-    INPUT - NUMBER/NAME?
-
-    DISPLAY - INFO
-
-    INPUT - HEROS - RETURN TO MAIN SCREEN
+        1-3 WILL LOOP BACK TO THE MAIN MENU DISPLAYING ELSE OPTIONS

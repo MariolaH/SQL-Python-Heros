@@ -52,6 +52,7 @@ def begin():
         select_all_heroes()
 begin()
 
+
 def add():
     name = input("Please name your Hero\v ")
     about_me = input("Add an about me\v ")
@@ -62,10 +63,15 @@ def add():
         VALUES (%s, %s, %s)
         """
     execute_query(query, params)
-    print(f'Congrats you created a new Hero named {name} ''\v')
-    main_menu = input('Press ENTER to return to main menu')
-    if main_menu == "":
-        pass
+    # print(f'Congrats you created a new Hero named {name} ''\v')
+    # main_menu = input('Press ENTER to return to main menu')
+    # if main_menu == "":
+    #     pass
+    next = input('Do you want to create another Hero? Yes or No  ').capitalize()
+    if next == 'Yes':
+        add()
+    elif next == 'No':
+        options_menu()
 
 
 def update():
@@ -80,9 +86,15 @@ def update():
         """
     execute_query(query, params)
     print(f'Heroes name has been changed to {change_name} ''\v')
-    main_menu = input('Press ENTER to return to main menu')
-    if main_menu == "":
-        pass
+    # main_menu = input('Press ENTER to return to main menu')
+    # if main_menu == "":
+    #     pass
+    next = input('Do you want to update another Heros name ? Yes or No  ').capitalize()
+    if next == 'Yes':
+        os.system('clear')
+        update()
+    elif next == 'No':
+        options_menu()
 
 
 def delete():
@@ -140,8 +152,14 @@ options()
 
 
 
-
+# SELECT *
+# FROM Table1 
+# INNER JOIN Table2
+#     ON Condition
+# INNER JOIN Table3
+#     ON Condition;
 
 # def abilities():
 #     add abilites to heroes when their name is selected
 
+# %s operator lets you add a value into a Python string
