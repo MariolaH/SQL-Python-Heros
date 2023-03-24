@@ -56,9 +56,9 @@ begin()
 
 
 def add():
-    name = input("Please name your Hero\v ")
-    about_me = input("Add an about me\v ")
-    biography = input("Add a bio\v ")
+    name = input("Please name your Hero... \v ")
+    about_me = input("Add an about me... \v ")
+    biography = input("Add a bio... \v ")
     params = (name, about_me, biography)
     query = """ 
         INSERT INTO heroes (name, about_me, biography)
@@ -116,12 +116,9 @@ def delete():
 |_.__/  \__, | \___| \___| \___| \___| 
         |___/                                     
 
-
-
-
 """)
 
-    next = input('Do you want to delete another Hero? Yes or No  ').capitalize()
+    next = input('\vDo you want to delete another Hero? Yes or No  ').capitalize()
     if next == 'Yes':
         delete()
     elif next == 'No':
@@ -141,7 +138,7 @@ def options():
         WHERE id = %s 
         """
     select_hero = execute_query(query, (start, )).fetchone()
-    print(f'Name: {select_hero[0]}\v\nAbout: {select_hero[1]}\n\vBio:{select_hero[2]}\v')
+    print(f'Name: {select_hero[0]}\v\nAbout: {select_hero[1]}\n\vBiography: {select_hero[2]}\v')
     game = input("Had enough of these Heroes... TYPE: YES for the next task \n\vTYPE: NO to see more Heroes and their info... ").capitalize()
     if game == "Yes":
         os.system('clear') 
