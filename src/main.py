@@ -32,7 +32,7 @@ def select_all_heroes():
 # 5
 def options_menu():
     os.system('clear')
-    value = input('\vWhat would you like to do next?\n\v 1. Add a new hero?\n\v 2. Delete a Hero?\n\v 3. Change the name of a hero?\n\v 4. Hero Info?\n\v Select a number?\n\v')
+    value = input('\vWhat would you like to do next?\n\v 1. Add a new Hero?\n\v 2. Delete a Hero?\n\v 3. Change the name of a Hero?\n\v 4. Hero Info?\n\v Select a number?\n\v')
     if value == '1':
         add()
         options_menu()
