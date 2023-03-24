@@ -1,6 +1,7 @@
 from database.db_connection import execute_query
 import os
 
+# 1
 os.system('clear')
 def logo():
     print("""
@@ -16,7 +17,7 @@ def logo():
 """)
 logo()
 
-
+# 3
 def select_all_heroes():
     query = """ 
         SELECT id, name 
@@ -28,6 +29,7 @@ def select_all_heroes():
     for count, x in name:
         print(f'ID {count}: {x}' '\v')              
 
+# 5
 def options_menu():
     os.system('clear')
     value = input('\vWhat would you like to do next?\n\v 1. Add a new hero?\n\v 2. Delete a Hero?\n\v 3. Change the name of a hero?\n\v 4. Hero Info?\n\v Select a number?\n\v')
@@ -45,7 +47,7 @@ def options_menu():
         os.system('clear')
         begin()
         options()
-
+# 2
 def begin():
     start = input("Hit ENTER to see a list of Heroes" '\v')
     if start == "":
@@ -125,7 +127,7 @@ def delete():
     elif next == 'No':
         options_menu()
 
-
+# 4
 def options():
     os.system('clear')
     select_all_heroes()
