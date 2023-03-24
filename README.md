@@ -2,7 +2,8 @@
 
 OBJECTIVE
 
-Create an interactive shell script with the help of python that helps superheroes stay in touch with their friends and keep track of supervillains through the terminal.
+Create an interactive shell script with the help of python that helps superheroes stay in 
+touch with their friends and keep track of supervillains through the terminal.
 
 ```
 
@@ -62,8 +63,7 @@ JOIN
 
 UPDATE
 
-EX. ability_ type
-FROM Mind control to mind reader
+EX. Heroes name
 
 UPDATE table_name
 SET column1 = value1,
@@ -108,4 +108,5 @@ START TERMINAL
         3 UPDATE NAME OF A HERO
         4. RETURN TO STARTING POINT
 
-        1-3 WILL LOOP BACK TO THE MAIN MENU DISPLAYING ELSE OPTIONS
+        1-3 WILL EITHER LOOP BACK THROUGH OR GO BACK TO THE MAIN MENU DISPLAYING ELSE OPTIONS
+        4 - LOOP BACK TO THE BEGINNING 
